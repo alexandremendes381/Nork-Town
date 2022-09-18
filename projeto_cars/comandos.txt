@@ -1,0 +1,4 @@
+caso o requeriments.txt nao funcione estas sao as bibliotecas
+django
+pymysql
+django-heroku

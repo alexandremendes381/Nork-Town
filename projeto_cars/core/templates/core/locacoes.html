@@ -1,0 +1,62 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+
+	<form action="" method="post">
+		{% csrf_token %}
+		<fieldset>
+	  		<legend>Nova Aquisição</legend>
+			{{ form.as_p }}
+		<fieldset>
+	  		<button type="submit" class="btn btn-primary">
+	  				<span class="glyphicon glyphicon-thumbs-up"></span>
+	  				Cadastrar
+			</button>
+		</fieldset>
+	</form>
+</div> <!-- fim .container 1 -->
+
+<div class="container">
+ 	<br /> <br />
+</div> <!-- fim .container 2 -->
+
+
+<div class="container">
+  <div class="panel panel-default">
+  		<div class="panel-heading">
+    		<h2 class="panel-title">Lista de Aquisição</h2>
+ 	 	</div><!-- fim .panel-heading -->
+
+			<div class="panel-body">
+  				<table class="table table-hover">
+					<tr>
+  						<th>Código</th>
+              			<th>Cliente</th>
+						<th>tipo</th>
+              			<th>cor</th>
+  						<th>Opção</th>
+  					</tr>
+				{% for locacao in locacoes %}
+					<tr>
+    					<td class="col-md-1">{{ locacao.id }}</td>					  	
+					    <td class="col-md-1">{{ locacao.cliente }}</td>
+    					<td class="col-md-1">{{ locacao.tipo }}</td>					  	
+					    <td class="col-md-1">{{ locacao.cor }}</td>
+    					<td class="col-md-2">
+    						<a class="btn btn-danger" href="{% url 'url_removerlocacao' locacao.id %}" role="button">Excluir</a>
+    					</td>
+    				</tr>
+				{% endfor %}
+    			</table>
+
+ 		</div><!-- fim .panel-body -->
+	</div><!-- fim .panel -->
+</div><!-- fim .container 3 -->
+
+
+{% endblock %}
